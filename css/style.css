@@ -1,0 +1,195 @@
+/* =========================================================
+   Maracaki — estilos
+   Ordem: variáveis > base > header > hero > seções > footer > responsivo
+   ========================================================= */
+
+/* ---------- Variáveis e tema ---------- */
+:root{
+  --bg:#F5F1E8; --fg:#242622; --muted:#6a6c66; --line:#242622; --orange:#FF6A21;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){--bg:#242622;--fg:#F5F1E8;--muted:#b5b5b0;--line:#F5F1E8}
+}
+:root[data-theme="dark"]{--bg:#242622;--fg:#F5F1E8;--muted:#b5b5b0;--line:#F5F1E8}
+
+/* ---------- Base ---------- */
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+*,*::before,*::after{box-sizing:border-box}
+body{
+  margin:0;background:var(--bg);color:var(--fg);
+  font-family:"Bricolage Grotesque",system-ui,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;
+  font-size:18px;line-height:1.55;overflow-x:hidden;
+}
+img{max-width:100%}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--orange);outline-offset:3px}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+
+/* ---------- Header ---------- */
+header .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:76px}
+.logo{display:flex;align-items:center;min-width:0;font-weight:800;font-size:24px;letter-spacing:-.03em;text-decoration:none}
+.logo img{height:46px;width:auto;display:block;max-width:100%}
+.lg-d{display:none!important}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]) .lg-l{display:none!important}
+  :root:not([data-theme="light"]) .lg-d{display:block!important}
+}
+:root[data-theme="dark"] .lg-l{display:none!important}
+:root[data-theme="dark"] .lg-d{display:block!important}
+nav{display:flex;gap:28px;align-items:center;flex:none}
+nav a{text-decoration:none;font-weight:600;font-size:16px}
+nav a:not(.btn):hover{color:var(--orange)}
+
+/* ---------- Botão ---------- */
+.btn{
+  display:inline-block;background:var(--orange);color:#242622;font-weight:800;text-decoration:none;
+  padding:14px 26px;border:2px solid var(--orange);border-radius:999px;
+  transition:background .15s,color .15s,border-color .15s,transform .2s ease;
+}
+.btn:hover{background:var(--bg);color:var(--fg);border-color:var(--fg);transform:translateY(-2px)}
+
+/* ---------- Hero ---------- */
+.hero{
+  min-height:calc(100vh - 76px);
+  min-height:calc(100svh - 76px - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px));
+  display:flex;align-items:center;padding:48px 0;
+}
+.hero .wrap{width:100%;display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+.hero-text{min-width:0}
+h1{font-size:clamp(37px,5.6vw,72px);line-height:.95;letter-spacing:-.045em;font-weight:800;margin:0 0 28px}
+h1 span{display:block}
+h1 .o{color:var(--orange)}
+.lead{font-size:clamp(20px,1.9vw,25px);color:var(--muted);max-width:30em;margin:0}
+.hero-mascot{display:flex;justify-content:center}
+.hero-mascot img{width:100%;max-width:540px;height:auto;display:block;filter:drop-shadow(0 18px 24px rgba(36,38,34,.18))}
+
+/* ---------- Seções ---------- */
+section{padding:84px 0;border-top:2px solid var(--line)}
+h2.t{font-size:clamp(32px,4.6vw,52px);line-height:1;letter-spacing:-.035em;font-weight:800;margin:0 0 20px}
+.split{display:grid;grid-template-columns:1fr 1.2fr;gap:56px;align-items:start}
+.split p{margin:0 0 18px;font-size:20px}
+.split p.m{color:var(--muted);font-size:18px}
+.list{list-style:none;margin:28px 0 0;padding:0}
+.list li{padding:16px 0;border-top:2px solid var(--line);font-weight:600;display:flex;gap:14px;align-items:baseline}
+.list li:last-child{border-bottom:2px solid var(--line)}
+.list li::before{content:"";flex:none;width:12px;height:12px;border-radius:50%;background:var(--orange)}
+.list small{font-weight:400;color:var(--muted);font-size:16px;margin-left:6px}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:40px}
+.card{border:2px solid var(--line);border-radius:24px;padding:30px 28px 34px}
+.dot{width:16px;height:16px;border-radius:50%;background:var(--orange);margin-bottom:22px}
+.card h3{font-size:24px;letter-spacing:-.025em;line-height:1.1;margin:0 0 10px}
+.card p{margin:0;color:var(--muted);font-size:17px}
+
+/* ---------- CTA ---------- */
+.cta{background:var(--orange);color:#242622;border-top:0}
+.cta h2{font-size:clamp(30px,6vw,68px);line-height:.98;letter-spacing:-.04em;font-weight:800;margin:0 0 28px;max-width:12em}
+.cta .btn{background:#242622;color:#F5F1E8;border-color:#242622}
+.cta .btn:hover{background:#F5F1E8;color:#242622}
+
+/* ---------- Footer ---------- */
+footer{padding:26px 0;font-size:15px;color:var(--muted)}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+/* =========================================================
+   Animações de entrada (leves)
+   Só rodam se o usuário NÃO pediu "menos movimento".
+   ========================================================= */
+@media (prefers-reduced-motion:no-preference){
+  @keyframes fade-down{from{opacity:0;transform:translateY(-14px)}to{opacity:1;transform:none}}
+  @keyframes fade-up{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+  @keyframes pop-in{from{opacity:0;transform:translateY(30px) scale(.94)}to{opacity:1;transform:none}}
+  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+
+  /* Ao carregar a página */
+  header .wrap{animation:fade-down .6s ease both}
+  h1 span{animation:fade-up .75s cubic-bezier(.2,.7,.2,1) both}
+  h1 span:nth-child(1){animation-delay:.10s}
+  h1 span:nth-child(2){animation-delay:.22s}
+  h1 span:nth-child(3){animation-delay:.34s}
+  .lead{animation:fade-up .75s cubic-bezier(.2,.7,.2,1) .50s both}
+  .hero-mascot{animation:pop-in .9s cubic-bezier(.2,.8,.2,1) .30s both}
+  .hero-mascot img{animation:float 5s ease-in-out 1.5s infinite}
+
+  /* Ao rolar até a seção (o JS adiciona .js no <html> e .is-visible no elemento) */
+  .js .reveal{opacity:0}
+  .js .reveal.is-visible{opacity:1;animation:fade-up .7s cubic-bezier(.2,.7,.2,1) backwards}
+  .js .reveal.is-visible.d1{animation-delay:.12s}
+  .js .reveal.is-visible.d2{animation-delay:.24s}
+}
+
+/* =========================================================
+   Responsivo (de telas grandes para pequenas)
+   ========================================================= */
+
+/* Telas grandes */
+@media (min-width:1500px){
+  .wrap{max-width:1320px}
+  h1{font-size:clamp(68px,4.2vw,78px)}
+  .hero-mascot img{max-width:620px}
+}
+
+/* Notebook pequeno / tablet deitado */
+@media (max-width:1024px){
+  .wrap{padding:0 32px}
+  .hero .wrap{gap:28px}
+  section{padding:72px 0}
+  .split{gap:36px}
+}
+
+/* Tablet em pé: hero empilhado, robô centralizado abaixo do texto */
+@media (max-width:900px){
+  .hero{min-height:auto;padding:48px 0 56px}
+  .hero .wrap{grid-template-columns:1fr;gap:36px}
+  .hero-text{max-width:36em}
+  h1{font-size:clamp(37px,8.4vw,72px)}
+  .hero-mascot{order:2}
+  .hero-mascot img{max-width:420px}
+  .split{grid-template-columns:1fr;gap:28px}
+  .cards{grid-template-columns:repeat(2,1fr)}
+}
+
+/* Celular */
+@media (max-width:760px){
+  .wrap{padding:0 22px}
+  .hero{padding:36px 0 48px}
+  section{padding:60px 0}
+  nav a:not(.btn){display:none}
+  .cards{grid-template-columns:1fr}
+  .hero-mascot img{max-width:340px}
+}
+
+/* Celular pequeno */
+@media (max-width:480px){
+  body{font-size:17px}
+  .wrap{padding:0 18px}
+  header .wrap{height:68px}
+  .logo img{height:38px}
+  .btn{padding:12px 22px;font-size:16px}
+  .hero{padding:28px 0 40px}
+  .hero .wrap{gap:28px}
+  h1{margin-bottom:20px}
+  .hero-mascot img{max-width:290px}
+  .card{padding:24px 22px 28px;border-radius:20px}
+  footer .wrap{flex-direction:column;gap:6px}
+}
+
+/* Telas muito estreitas (ex.: 320px) */
+@media (max-width:360px){
+  h1{font-size:34px}
+  .logo img{height:34px}
+  .hero-mascot img{max-width:250px}
+}
+
+/* Celular/tablet deitado (pouca altura) */
+@media (max-height:560px) and (orientation:landscape){
+  .hero{min-height:auto;padding:32px 0}
+}
+
+/* Acessibilidade: menos movimento */
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .btn{transition:none}
+}
